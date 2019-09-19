@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+	<head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>Exercise 1</title>
+	</head>
+	<body>
+        <h2>TheXMLHttpRequest Object</h2>
+        <input id="number">
+        <button type="button" onclick="loadDoc()">Request data</button>
+		<p id="demo">input positive number</p>
+        <script>
+            function loadDoc() {
+                numberValue = document.getElementById("number").value;
+                URL = "http://localhost/databases-course/index3.php?number="+numberValue;
+                const xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        document.getElementById("demo").innerHTML = this.responseText;
+                    }
+                };
+                xhttp.open("GET", URL, true);
+                xhttp.send();
+            }
+        </script>
+    </body>
+</html>
